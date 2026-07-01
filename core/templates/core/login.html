@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Anushka's Social Network - Login</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f7f9fc; margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; height: 100vh; background: linear-gradient(135deg, #74b9ff, #a29bfe); }
+        .login-container { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); text-align: center; width: 350px; }
+        .login-container h2 { margin: 0 0 5px 0; color: #5c2d91; font-size: 28px; text-transform: uppercase; }
+        .login-container h3 { margin: 0 0 25px 0; color: #666; font-size: 18px; font-weight: normal; }
+        .login-container input[type="text"], .login-container input[type="password"] { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 15px; }
+        .login-container button { width: 100%; padding: 12px; background-color: #a29bfe; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .login-container button:hover { background-color: #6c5ce7; }
+        .login-container p { margin-top: 20px; font-size: 14px; color: #666; }
+        .login-container a { color: #6c5ce7; text-decoration: none; font-weight: bold; }
+        .error-msg { color: #e74c3c; margin-bottom: 15px; font-size: 14px; }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>ANUSHKA</h2>
+        <h3>Social Space</h3>
+
+        {% if form.errors %}
+            <p class="error-msg">Invalid username or password!</p>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Log In</button>
+        </form>
+
+        <p>Don't have an account? <a href="/register/">Register here</a></p>
+    </div>
+
+</body>
+</html>
